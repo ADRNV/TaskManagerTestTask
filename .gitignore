@@ -6,7 +6,6 @@
 *.suo
 *.cache
 *.editorconfig
-*.json
 /Server/TaskManager.WebAPI/TaskManager.WebAPI/obj/TaskManager.WebAPI.csproj.nuget.g.targets
 *.props
 *.user
