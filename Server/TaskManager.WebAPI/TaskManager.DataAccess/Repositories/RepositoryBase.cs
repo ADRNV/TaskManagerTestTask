@@ -4,7 +4,7 @@ using TaskManager.Core.Repositories;
 
 namespace TaskManager.DataAccess.Repositories
 {
-    public abstract class RepositoryBase<T, C> : IRepository<T> where C: ProjectsContext
+    public abstract class RepositoryBase<T, C> : IRepository<T> where C : ProjectsContext
     {
         protected C _usersContext;
 
@@ -18,7 +18,7 @@ namespace TaskManager.DataAccess.Repositories
         }
 
         public abstract Task<Guid> Create(T entity);
-        
+
         public abstract Task<Guid> Update(T entity);
 
         public abstract Task<bool> Delete(Guid id);

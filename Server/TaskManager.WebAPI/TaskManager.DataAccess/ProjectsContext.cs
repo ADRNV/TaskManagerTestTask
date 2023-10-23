@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaskManager.DataAccess.Entities;
 using TaskManager.DataAccess.Entities.Configuration;
 
 namespace TaskManager.DataAccess
@@ -12,7 +11,7 @@ namespace TaskManager.DataAccess
 
         public DbSet<EntityComment> Comments { get; set; }
 
-        public ProjectsContext(DbContextOptions<ProjectsContext> dbContextOptions) : base(dbContextOptions) 
+        public ProjectsContext(DbContextOptions<ProjectsContext> dbContextOptions) : base(dbContextOptions)
         {
 
         }
