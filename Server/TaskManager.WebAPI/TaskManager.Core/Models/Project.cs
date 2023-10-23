@@ -9,5 +9,7 @@
         public DateTime CreatedDate { get; set; }
 
         public DateTime UpdatedDate { get; set; }
+
+        public List<Task> Tasks { get; set; } = new();
     }
 }

@@ -7,10 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Core\TaskManager.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="TaskManager.Core.Models.Comment">
+      <Alias>CoreComment</Alias>
+    </Using>
+    <Using Include="TaskManager.Core.Models.Project">
+      <Alias>CoreProject</Alias>
+    </Using>
+    <Using Include="TaskManager.Core.Models.Task">
+      <Alias>CoreTask</Alias>
+    </Using>
     <Using Include="TaskManager.DataAccess.Entities.Task">
       <Alias>EntityTask</Alias>
     </Using>

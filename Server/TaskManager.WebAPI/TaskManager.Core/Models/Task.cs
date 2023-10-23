@@ -13,5 +13,9 @@
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }
+
+        public List<Comment> Comments { get; set; } = new();
+
+        public Project Project { get; set; }
     }
 }
