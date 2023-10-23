@@ -3,7 +3,6 @@
 ################################################################################
 
 *.vsidx
-*.cs
 *.suo
 *.cache
 *.editorconfig
@@ -11,3 +10,4 @@
 /Server/TaskManager.WebAPI/TaskManager.WebAPI/obj/TaskManager.WebAPI.csproj.nuget.g.targets
 *.props
 *.user
+/Server/TaskManager.WebAPI/TaskManager.WebAPI/obj/Debug/net7.0
