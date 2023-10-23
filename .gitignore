@@ -86,3 +86,4 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 *.v2
+/Server/TaskManager.WebAPI/.vs/ProjectEvaluation
