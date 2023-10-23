@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.WebAPI", "TaskManager.WebAPI\TaskManager.WebAPI.csproj", "{68BF48CA-37F5-4B2B-881D-0AB7FAFD9C7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.DataAccess", "TaskManager.DataAccess\TaskManager.DataAccess.csproj", "{3DF74024-F0CA-41A4-97A6-15B1EC5486A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{68BF48CA-37F5-4B2B-881D-0AB7FAFD9C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68BF48CA-37F5-4B2B-881D-0AB7FAFD9C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68BF48CA-37F5-4B2B-881D-0AB7FAFD9C7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF74024-F0CA-41A4-97A6-15B1EC5486A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF74024-F0CA-41A4-97A6-15B1EC5486A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF74024-F0CA-41A4-97A6-15B1EC5486A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF74024-F0CA-41A4-97A6-15B1EC5486A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
