@@ -87,3 +87,4 @@ _[Ss]cripts
 *.dot[Cc]over
 *.v2
 /Server/TaskManager.WebAPI/.vs/ProjectEvaluation
+*.config
