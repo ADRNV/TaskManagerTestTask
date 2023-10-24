@@ -112,3 +112,5 @@ _[Ss]cripts
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/Client/tasks-manager/node_modules/.bin
+/Client/tasks-manager/node_modules
