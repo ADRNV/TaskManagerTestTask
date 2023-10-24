@@ -19,10 +19,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.DataAccess\TaskManager.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\TaskManager.Domain\TaskManager.Domain.csproj" />
+		<Using Include="TaskManager.Core.Models.Comment">
+			<Alias>CoreComment</Alias>
+		</Using>
+		<Using Include="TaskManager.Core.Models.Project">
+			<Alias>CoreProject</Alias>
+		</Using>
+		<Using Include="TaskManager.Core.Models.Task">
+			<Alias>CoreTask</Alias>
+		</Using>
   </ItemGroup>
 
 </Project>

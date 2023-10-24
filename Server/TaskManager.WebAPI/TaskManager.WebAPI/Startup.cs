@@ -2,8 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using TaskManager.Core.Models;
+using TaskManager.Core.Repositories;
+using TaskManager.Core.Services;
 using TaskManager.DataAccess;
 using TaskManager.DataAccess.Entities.Mapping;
+using TaskManager.DataAccess.Repositories;
+using TaskManager.Domain;
 using TaskManager.WebAPI.Middlewares;
 
 namespace TaskManager.WebAPI
@@ -30,6 +35,10 @@ namespace TaskManager.WebAPI
                 c.AddProfile<TaskMappingConfiguration>();
                 c.AddProfile<CommentMappingConfiguration>();
             });
+
+            services.AddScoped<IRepository<Project>, ProjectsRepository>();
+
+            services.AddScoped<IService<Project>, ProjectsService>();
 
             services.AddMediatR(c =>
             {
