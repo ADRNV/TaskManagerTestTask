@@ -33,6 +33,7 @@ export default function ProjectsTable({tasks, setTasks}) {
             <th>Description</th>
             <th>Start</th>
             <th>End</th>
+            <th>Amount time</th>
           </tr>
         </thead>
         <tbody>
@@ -44,6 +45,10 @@ export default function ProjectsTable({tasks, setTasks}) {
               <td>{t.taskName}</td>
               <td>{t.startDate.substring(11, 16)}</td>
               <td>{t.cancelDate.substring(11, 16)}</td>
+              <td>{`${
+                (new Date(t.cancelDate).getHours() - (new Date(t.startDate).getHours()))}:
+                ${Math.abs((new Date(t.cancelDate).getMinutes() - (new Date(t.startDate).getMinutes())))}`
+                }</td>
             </tr>
             })}
         </tbody>
