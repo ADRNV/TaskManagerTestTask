@@ -1,9 +1,11 @@
 import React from 'react'
 import Table  from 'react-bootstrap/Table';
 
-export default function ProjectsTable(projects) {
+export default function ProjectsTable({tasks}) {
+
   return (
-    <Table striped bordered hover>
+    <div>
+    {tasks !== undefined ? <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
@@ -16,14 +18,21 @@ export default function ProjectsTable(projects) {
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>11:06</td>
-          <td>Create react app</td>
-          <td>Create react app with for api</td>
-          <td>22:00</td>
-          <td>22:01</td>
+          {tasks.map((t, i) => {
+          return <>
+          <td>{i+1}</td>
+          <td>{t.createDate}</td>
+          <td>{t.taskName}</td>
+          <td>{t.taskName}</td>
+          <td>{t.startDate}</td>
+          <td>{t.cancelDate}</td>
+          </>
+          })}
+      
         </tr>
       </tbody>
-    </Table>
+    </Table> : <h1>Not projects yet</h1>
+    }
+   </div> 
   )
 }

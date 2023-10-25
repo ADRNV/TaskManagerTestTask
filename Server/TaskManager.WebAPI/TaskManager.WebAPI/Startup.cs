@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using TaskManager.Core.Models;
@@ -48,6 +49,16 @@ namespace TaskManager.WebAPI
             services.AddMvcCore()
                 .AddApiExplorer();
 
+            services.AddCors(c =>
+            {
+                c.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SupportNonNullableReferenceTypes();
@@ -71,6 +82,8 @@ namespace TaskManager.WebAPI
             {
                 context.Database.EnsureCreated();
             }
+
+            app.UseCors("default");
 
             app.UseSwagger();
 
