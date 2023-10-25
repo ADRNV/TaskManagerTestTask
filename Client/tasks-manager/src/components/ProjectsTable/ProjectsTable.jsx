@@ -21,11 +21,11 @@ export default function ProjectsTable({tasks}) {
           {tasks.map((t, i) => {
           return <>
           <td>{i+1}</td>
-          <td>{t.createDate}</td>
+          <td>{t.createDate.substring(11, 16)}</td>
           <td>{t.taskName}</td>
           <td>{t.taskName}</td>
-          <td>{t.startDate}</td>
-          <td>{t.cancelDate}</td>
+          <td>{t.startDate.substring(11, 16)}</td>
+          <td>{t.cancelDate.substring(11, 16)}</td>
           </>
           })}
       
