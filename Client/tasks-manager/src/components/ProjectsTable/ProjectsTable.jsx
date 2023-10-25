@@ -1,38 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Table  from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
+import TimePicker from 'react-time-picker'
+import 'react-time-picker/dist/TimePicker.css';
+import { Button } from 'bootstrap';
 
-export default function ProjectsTable({tasks}) {
+export default function ProjectsTable({tasks, setTasks}) {
+  
+  var [sortingTime, setSortingTime] = useState()
+  
+  function sortByDate(){
+    var sortedTasks = [...tasks].sort((a, b) => {
+      return sortingTime - a.createDate
+    })
+
+    setTasks(sortedTasks)
+  }
 
   return (
     <div>
-    {tasks !== undefined ? <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Times</th>
-          <th>Ticket</th>
-          <th>Description</th>
-          <th>Start</th>
-          <th>End</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {tasks.map((t, i) => {
-          return <>
-          <td>{i+1}</td>
-          <td>{t.createDate.substring(11, 16)}</td>
-          <td>{t.taskName}</td>
-          <td>{t.taskName}</td>
-          <td>{t.startDate.substring(11, 16)}</td>
-          <td>{t.cancelDate.substring(11, 16)}</td>
-          </>
-          })}
-      
-        </tr>
-      </tbody>
-    </Table> : <h1>Not projects yet</h1>
-    }
-   </div> 
+      <div>
+      <Form.Label>Sort by date</Form.Label>
+      <TimePicker onChange={(value) => setSortingTime(value)}/>
+      <button onClick={() => sortByDate(sortingTime)}>Sort</button>
+      <div>
+        {tasks !== undefined ? <Table striped bordered hover>
+        <thead>
+         <tr>
+           <th>#</th>
+           <th>Times</th>
+           <th>Ticket</th>
+            <th>Description</th>
+            <th>Start</th>
+            <th>End</th>
+          </tr>
+        </thead>
+        <tbody>
+            {tasks.map((t, i) => {
+            return <tr>
+            <td>{i+1}</td>
+              <td>{t.createDate.substring(11, 16)}</td>
+              <td>{t.taskName}</td>
+              <td>{t.taskName}</td>
+              <td>{t.startDate.substring(11, 16)}</td>
+              <td>{t.cancelDate.substring(11, 16)}</td>
+            </tr>
+            })}
+        </tbody>
+        </Table> : <h1>Not projects yet</h1>
+          }
+      </div>
+    </div>
+  </div>
+     
   )
 }
