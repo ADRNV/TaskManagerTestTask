@@ -41,6 +41,8 @@ namespace TaskManager.WebAPI
 
             services.AddScoped<IService<Project>, ProjectsService>();
 
+            services.AddSingleton<ICalculationService, CalculationService>();
+
             services.AddMediatR(c =>
             {
                 c.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());

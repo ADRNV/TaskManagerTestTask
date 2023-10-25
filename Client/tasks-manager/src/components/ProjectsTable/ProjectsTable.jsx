@@ -1,14 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Table  from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import TimePicker from 'react-time-picker'
 import 'react-time-picker/dist/TimePicker.css';
-import { Button } from 'bootstrap';
+import { useFetchHook } from '../../hooks/useFetching';
+import ProjectsClient from '../../apiClients/ProjetsApiClient';
 
 export default function ProjectsTable({tasks, setTasks}) {
   
   var [sortingTime, setSortingTime] = useState()
-  
+
+  var client = new ProjectsClient()
+
+  var [times, setTimes] = useState([])
+
+  var [fetching, loading, error] = useFetchHook(async () => {
+      await tasks.map(async (t,i) => {
+        await client.getAmountTime(t.startDate, t.cancelDate)
+        .then(c => {
+          setTimes((times) => [...times, c])
+          console.log(c)
+        })
+      })
+  })
+
+  useEffect(() => { 
+    fetching()
+  }, tasks)
+
   function sortByDate(){
     var sortedTasks = [...tasks].sort((a, b) => {
       return sortingTime - a.createDate
@@ -33,11 +52,12 @@ export default function ProjectsTable({tasks, setTasks}) {
             <th>Description</th>
             <th>Start</th>
             <th>End</th>
-            <th>Amount time</th>
+            <th>Amount</th>
           </tr>
         </thead>
         <tbody>
-            {tasks.map((t, i) => {
+            {
+            tasks.map((t, i) => {
             return <tr>
             <td>{i+1}</td>
               <td>{t.createDate.substring(11, 16)}</td>
@@ -45,10 +65,7 @@ export default function ProjectsTable({tasks, setTasks}) {
               <td>{t.taskName}</td>
               <td>{t.startDate.substring(11, 16)}</td>
               <td>{t.cancelDate.substring(11, 16)}</td>
-              <td>{`${
-                (new Date(t.cancelDate).getHours() - (new Date(t.startDate).getHours()))}:
-                ${Math.abs((new Date(t.cancelDate).getMinutes() - (new Date(t.startDate).getMinutes())))}`
-                }</td>
+              <td>{times[i]}</td>
             </tr>
             })}
         </tbody>

@@ -13,4 +13,19 @@ export default class ProjectsClient{
         return data.data
     }
 
+    async getAmountTime(start, cancel){
+        
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: 'https://localhost:44379/api/Task/calc',
+            headers: { },
+            params:{start:start, cancelDate:cancel}
+          };
+          
+        const instance = axios.create(config)
+
+        return (await axios.request(config)).data
+    }
+
 }
