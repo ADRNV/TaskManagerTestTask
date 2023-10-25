@@ -7,8 +7,8 @@ namespace TaskManager.DataAccess.Entities.Mapping
         public TaskMappingConfiguration()
         {
             CreateMap<CoreTask, EntityTask>()
+                .ForMember(t => t.Id, o => o.Ignore())
                 .ForMember(t => t.Comments, o => o.MapFrom(t => t.Comments))
-                .ForMember(t => t.Project, o => o.MapFrom(t => t.Project))
                 .ReverseMap();
         }
     }

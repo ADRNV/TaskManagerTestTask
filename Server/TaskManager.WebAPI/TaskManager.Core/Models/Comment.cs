@@ -6,8 +6,6 @@
 
         public byte CommentType { get; set; }
 
-        public byte[] Content { get; set; }
-
-        public Task Task { get; set; }
+        public string Content { get; set; }
     }
 }
