@@ -8,7 +8,7 @@ import ProjectsClient from '../../apiClients/ProjetsApiClient';
 
 export default function ProjectsTable({tasks, setTasks}) {
   
-  var [sortingTime, setSortingTime] = useState()
+  var [sortingTime, setSortingTime] = useState('')
 
   var client = new ProjectsClient()
 
@@ -29,10 +29,7 @@ export default function ProjectsTable({tasks, setTasks}) {
   }, tasks)
 
   function sortByDate(){
-    var sortedTasks = [...tasks].sort((a, b) => {
-      return sortingTime - a.createDate
-    })
-
+    var sortedTasks = tasks.sort((a, b) => Number(new Date(b.createDate)) - Number(new Date(a.createDate)))
     setTasks(sortedTasks)
   }
 
@@ -41,7 +38,7 @@ export default function ProjectsTable({tasks, setTasks}) {
       <div>
       <Form.Label>Sort by date</Form.Label>
       <TimePicker onChange={(value) => setSortingTime(value)}/>
-      <button onClick={() => sortByDate(sortingTime)}>Sort</button>
+      <button onClick={() => sortByDate()}>Sort</button>
       <div>
         {tasks !== undefined ? <Table striped bordered hover>
         <thead>

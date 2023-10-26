@@ -5,7 +5,7 @@ using TaskManager.Core.Services;
 namespace TaskManager.WebAPI.Features.Tasks
 {
     public class CalculateTimeAmount
-    {
+    { 
         public record Command(DateTime Start, DateTime Cancel) : IRequest<TimeSpan>;
 
         public class Handler : IRequestHandler<Command, TimeSpan>
