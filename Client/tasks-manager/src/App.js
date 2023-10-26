@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      {projects.length != 0 ? <ProjectSelector project={project} setProject={setProject} projects={projects}/> : <Spinner animation="border" role="status"></Spinner>}
+      {!loading ? <ProjectSelector project={project} setProject={setProject} projects={projects}/> : <Spinner animation="border" role="status"></Spinner>}
       <ProjectsTable tasks={project.tasks} setTasks={setProject}/>
     </div>
   );

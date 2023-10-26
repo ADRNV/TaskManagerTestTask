@@ -9,9 +9,11 @@ export const useFetchHook = (callback) => {
     const fetching = async () => {
         try{
             await callback()
+            setLoading(false)
         }
         catch(e){
             setError(e)
+            setLoading(false)
         }
     }
 
