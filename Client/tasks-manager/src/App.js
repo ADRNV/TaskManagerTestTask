@@ -1,36 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import ProjectsTable from './components/ProjectsTable/ProjectsTable';
-import { Button } from 'bootstrap';
-import ProjectSelector from './components/ProjectSelector/ProjectSelector';
-import ProjectsClient from './apiClients/ProjetsApiClient';
-import { useFetchHook } from './hooks/useFetching';
-import { useEffect, useState } from 'react';
-import Spinner from 'react-bootstrap/Spinner';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import ProjectsPage from './components/ProjectsPage/ProjectsPage';
+import { Nav } from 'react-bootstrap';
+import LayoutPanel from './components/Layout/LayoutPanel';
+import { Button } from 'react-bootstrap';
+import CreateProjectPage from './components/CreateProjectPage/CreateProjectPage';
 
 function App() {
   
-  var client = new ProjectsClient()
-
-  var [projects, setProjects] = useState([])
-
-  var [project, setProject] = useState({})
-
-  var [tasks, setTasks] = useState([])
-
-  var [fetching, loading, error] = useFetchHook(async () => {
-    var data = await client.getProjects(1, 3)
-    setProjects([...projects, ...data])
-  })
-
-  useEffect(() => {
-      fetching()
-  }, projects)
-
   return (
     <div className="App">
-      {!loading ? <ProjectSelector project={project} setProject={setProject} projects={projects}/> : <Spinner animation="border" role="status"></Spinner>}
-      <ProjectsTable tasks={project.tasks} setTasks={setProject}/>
+      <ProjectsPage/>
     </div>
   );
 }

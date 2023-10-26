@@ -28,4 +28,18 @@ export default class ProjectsClient{
         return (await axios.request(config)).data
     }
 
+    async createProject(project){
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        var raw = JSON.stringify(project)
+  
+        var requestOptions = {
+          method: 'POST',
+          headers: headers,
+          body: raw
+        };
+  
+      return fetch("https://localhost:44379/api/Projects/create", requestOptions)
+    }
+
 }
