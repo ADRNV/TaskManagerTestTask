@@ -60,11 +60,13 @@ namespace TaskManager.DataAccess.Repositories
 
         public override async Task<Guid> Update(CoreProject entity)
         {
-            var dbEntity = await _context.Projects.FindAsync(new object[]{ entity.Id});
+            var dbEntity = await _context.Projects
+                .Include(p => p.Tasks)
+                .FirstAsync(p => p.Id == entity.Id);
 
-            dbEntity = MapToEntity<EntityProject>(entity);
+            dbEntity.Tasks.Add(_mapper.Map<EntityTask>(entity.Tasks.Last()));
 
-            _context.Update(dbEntity);
+            _context.Projects.Update(dbEntity);
 
             await Save(dbEntity, EntityState.Modified);
 
