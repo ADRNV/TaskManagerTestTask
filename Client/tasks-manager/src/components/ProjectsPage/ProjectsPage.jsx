@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
 
-export default function ProjectsPage() {
+export default function ProjectsPage({projects, setProjects}) {
   
   var client = new ProjectsClient()
 
@@ -20,6 +20,8 @@ export default function ProjectsPage() {
   var [fetching, loading, error] = useFetchHook(async () => {
     var data = await client.getProjects(1, 3)
     setProjects([...projects, ...data])
+    var projectTasks = projects[0].tasks
+    setTasks([...tasks, ...projectTasks])
   })
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export default function ProjectsPage() {
       <div>
         <ProjectSelector project={project} setProject={setProject} projects={projects}/> 
         </div>: <Spinner animation="border" role="status"></Spinner>}
-      <ProjectsTable tasks={project.tasks} setTasks={setProject}/>
+      <ProjectsTable project={project} setProject={setProject} tasks={tasks} setTasks={setTasks}/>
     </div>
   );
 }

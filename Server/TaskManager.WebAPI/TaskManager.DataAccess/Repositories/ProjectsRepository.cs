@@ -64,6 +64,8 @@ namespace TaskManager.DataAccess.Repositories
 
             dbEntity = MapToEntity<EntityProject>(entity);
 
+            _context.Update(dbEntity);
+
             await Save(dbEntity, EntityState.Modified);
 
             return dbEntity.Id;

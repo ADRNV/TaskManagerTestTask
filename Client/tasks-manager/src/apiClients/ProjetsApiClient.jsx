@@ -42,4 +42,18 @@ export default class ProjectsClient{
       return fetch("https://localhost:44379/api/Projects/create", requestOptions)
     }
 
+    async updateProject(project){
+      var headers = new Headers();
+      headers.append("Content-Type", "application/json");
+      var raw = JSON.stringify(project)
+
+      var requestOptions = {
+        method: 'PUT',
+        headers: headers,
+        body: raw
+      };
+
+    return fetch("https://localhost:44379/api/Projects/update", requestOptions)
+  }
+
 }

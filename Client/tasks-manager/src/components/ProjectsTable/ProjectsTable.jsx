@@ -5,8 +5,11 @@ import TimePicker from 'react-time-picker'
 import 'react-time-picker/dist/TimePicker.css';
 import { useFetchHook } from '../../hooks/useFetching';
 import ProjectsClient from '../../apiClients/ProjetsApiClient';
+import { Button } from 'react-bootstrap';
+import ModalForm from '../Modal/ModalForm';
+import Modal from 'react-bootstrap/Modal';
 
-export default function ProjectsTable({tasks, setTasks}) {
+export default function ProjectsTable({project, setProject, tasks, setTasks}) {
   
   var [sortingTime, setSortingTime] = useState('')
 
@@ -38,7 +41,8 @@ export default function ProjectsTable({tasks, setTasks}) {
       <div>
       <Form.Label>Sort by date</Form.Label>
       <TimePicker onChange={(value) => setSortingTime(value)}/>
-      <button onClick={() => sortByDate()}>Sort</button>
+      <Button onClick={() => sortByDate()}>Sort</Button> 
+      <ModalForm project={project} setProject={setProject} tasks={tasks} setTasks={setTasks}/>
       <div>
         {tasks !== undefined ? <Table striped bordered hover>
         <thead>

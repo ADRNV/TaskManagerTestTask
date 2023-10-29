@@ -7,10 +7,6 @@ import { Button } from 'react-bootstrap';
 
 export default function LayoutPanel() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-    <Container>
-      <Link to={"/projects"}>Projects</Link>
-    </Container>
-  </Navbar>
+    <Link to="projects">Projects</Link>
   )
 }

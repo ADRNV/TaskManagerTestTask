@@ -4,12 +4,18 @@ import { Nav } from 'react-bootstrap';
 import LayoutPanel from './components/Layout/LayoutPanel';
 import { Button } from 'react-bootstrap';
 import CreateProjectPage from './components/CreateProjectPage/CreateProjectPage';
+import { useState } from 'react';
 
 function App() {
   
+  
+var [projects, setProjects] = useState([])
+  
+
   return (
-    <div className="App">
-      <ProjectsPage/>
+    <div>
+       <ProjectsPage project={projects} setProject={setProjects}/>
+       <CreateProjectPage projects={projects} setProjects={setProjects}/>
     </div>
   );
 }
